@@ -1383,7 +1383,7 @@ class ClanBattle:
                 _logger.info('群聊 失败 {} {} {}'.format(user_id, group_id, cmd))
                 return str(e)
             _logger.info('群聊 成功 {} {} {}'.format(user_id, group_id, cmd))
-            return '已挂树'
+            return '菜'
         elif match_num == 12:  # 申请/锁定
             if cmd == '申请出刀':
                 appli_type = 1
