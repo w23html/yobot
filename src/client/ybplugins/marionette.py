@@ -57,6 +57,7 @@ class Marionette:
             }
         newurl = self._gen_key()
         reply = '点击链接开始使用我：'+newurl
+        reply = reply + '\n{}'.format(ctx)
         if self.setting['web_mode_hint']:
             reply += '\n\n如果无法打开，请仔细阅读教程中《链接无法打开》的说明'
         return {
