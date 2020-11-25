@@ -25,6 +25,23 @@ from .util import atqq, pcr_datetime, pcr_timestamp, timed_cached_func
 
 _logger = logging.getLogger(__name__)
 
+### Define Some Memes ###
+
+# 开始挑战
+KANKAN_BIAOYAN = "[CQ:image,file=26A14839E16000C47998A0BA0AB002DA,url=http://c2cpicdw.qpic.cn/offpic_new/1819669596//1819669596-2551708061-26A14839E16000C47998A0BA0AB002DA/0?term=2]"
+# 伤害 低
+KANKAN_JIUZHE = "[CQ:image,file=6B8445F024137B7468C074CFF69FF002,url=http://c2cpicdw.qpic.cn/offpic_new/1819669596//1819669596-1100391875-6B8445F024137B7468C074CFF69FF002/0?term=2]"
+# 伤害 < 100W
+KANKAN_DENGSI = "[CQ:image,file=6FAE123008DF352FE0EA054A79725E1F,url=http://c2cpicdw.qpic.cn/offpic_new/1819669596//1819669596-3842825114-6FAE123008DF352FE0EA054A79725E1F/0?term=2]"
+
+# 尾刀
+KONGLONG_GOOD = "[CQ:image,file=9FA0289AEEAC2EE8DDA8BFB48C27B9F9,url=http://c2cpicdw.qpic.cn/offpic_new/1819669596//1819669596-2433772258-9FA0289AEEAC2EE8DDA8BFB48C27B9F9/0?term=2]"
+# 伤害 > 200W
+KONGLONG_WHAT = "???"
+# 伤害 正常
+KONGLONG_HAPPY = ""
+
+### End Define Memes ###
 
 class ClanBattle:
     Passive = True
@@ -464,13 +481,22 @@ class ClanBattle:
 
         nik = user.nickname or user.qqid
         if defeat:
-            msg = '{}对boss造成了{:,}点伤害，击败了boss\n（今日第{}刀，{}）'.format(
+            msg = '{}对boss造成了{:,}点伤害，击败了boss\n（今日第{}刀，{}）'.format( 
                 nik, health_before, finished+1, '尾余刀' if is_continue else '收尾刀'
             )
+            msg = msg + '\n{}'.format(KONGLONG_GOOD)
         else:
             msg = '{}对boss造成了{:,}点伤害\n（今日第{}刀，{}）'.format(
                 nik, damage, finished+1, '剩余刀' if is_continue else '完整刀'
             )
+            if damage < 1000000 and not is_continue:
+                msg = msg + '\n{}'.format(KANKAN_DENGSI)
+            else if damage < 1600000:
+                msg = msg + '\n{}'.format(KANKAN_JIUZHE)
+            else if damage > 2000000:
+                msg = msg + '\n{}'.format(KONGLONG_WHAT)
+            else:
+                msg = msg + '\n{}'.format(KONGLONG_HAPPY)
         status = BossStatus(
             group.boss_cycle,
             group.boss_num,
@@ -901,7 +927,7 @@ class ClanBattle:
         group.save()
 
         nik = self._get_nickname_by_qqid(qqid) or qqid
-        info = (f'{nik}已开始挑战boss' if appli_type == 1 else
+        info = (f'{nik}已开始挑战boss\n{KANKAN_BIAOYAN}' if appli_type == 1 else
                 f'{nik}锁定了boss\n留言：{extra_msg}')
         status = BossStatus(
             group.boss_cycle,
