@@ -491,9 +491,9 @@ class ClanBattle:
             )
             if damage < 1000000 and not is_continue:
                 msg = msg + '\n{}'.format(KANKAN_DENGSI)
-            else if damage < 1600000:
+            elif damage < 1600000:
                 msg = msg + '\n{}'.format(KANKAN_JIUZHE)
-            else if damage > 2000000:
+            elif damage > 2000000:
                 msg = msg + '\n{}'.format(KONGLONG_WHAT)
             else:
                 msg = msg + '\n{}'.format(KONGLONG_HAPPY)
