@@ -74,6 +74,7 @@ class Custom:
 
         cmd = ctx['raw_message']
         if cmd == '色图' or cmd == '来张色图' :
+            print("收到指令……生成中")
 
             # 调用api发送消息，详见cqhttp文档
             await self.api.send_private_msg(
