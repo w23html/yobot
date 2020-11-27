@@ -2,6 +2,7 @@
 随机色图生成器（未完成）
 """
 import asyncio
+import requests
 from typing import Any, Dict, Union
 
 from aiocqhttp.api import Api
@@ -52,10 +53,22 @@ class RandomPic:
     def generate_random_pic():
         """
         随机生成色图CQ地址
+        
         :return str
         """
 
-        return "生成失败"
+        # 使用随机图片API接口: https://api.lolicon.app/#/setu
+        # 仅限PCR，无R18要素
+        API_URL = 'https://api.lolicon.app/setu/'
+        API_PARAMS = { 'keyword': 'Re:Dive' }
+
+        result = requests.get(url = API_URL, params = API_PARAMS) 
+        data = result.json()
+
+        # 生成CQ格式的图片
+        cq_url = "[CQ:image,file={}]".format(data['url'])
+
+        return cq_url
 
 
     async def execute_async(self, ctx: Dict[str, Any]) -> Union[None, bool, str]:
