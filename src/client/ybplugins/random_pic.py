@@ -66,7 +66,7 @@ class RandomPic:
         data = result.json()
 
         # 生成CQ格式的图片
-        cq_url = "[CQ:image,file={}]".format(data['url'])
+        cq_url = "[CQ:image,file={}]".format(data['data'][0]['url'])
 
         return cq_url
 
