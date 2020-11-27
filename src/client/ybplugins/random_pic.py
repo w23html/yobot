@@ -60,7 +60,7 @@ class RandomPic:
         # return
 
         cmd = ctx['raw_message']
-        print("色图生成器已收到信息：" + ctx)
+        print("色图生成器已收到信息：" + str(ctx))
         if cmd == '色图' or cmd == '来张色图':
             print("收到指令……生成中")
 
