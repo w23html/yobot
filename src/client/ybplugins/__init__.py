@@ -14,4 +14,5 @@ __all__ = [
     'push_news',
     'calender',
     'custom',
+    'random_pic',
 ]
