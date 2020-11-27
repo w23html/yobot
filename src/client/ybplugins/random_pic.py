@@ -22,7 +22,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from quart import Quart
 
 
-class Custom:
+class RandomPic:
     def __init__(self,
                  glo_setting: Dict[str, Any],
                  scheduler: AsyncIOScheduler,
