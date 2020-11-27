@@ -60,13 +60,19 @@ class RandomPic:
         # 使用随机图片API接口: https://api.lolicon.app/#/setu
         # 仅限PCR，无R18要素
         API_URL = 'https://api.lolicon.app/setu/'
-        API_PARAMS = { 'keyword': 'Re:Dive' }
+        API_PARAMS = { 'keyword': 'Re:Dive', 'size1200': True}
 
         result = requests.get(url = API_URL, params = API_PARAMS) 
         data = result.json()
 
+        # 返回值
+        if data['code'] != 0:
+            return "lsp别冲了，休息休息\n[CQ:image,file=6FAE123008DF352FE0EA054A79725E1F,url=http://c2cpicdw.qpic.cn/offpic_new/1819669596//1819669596-3842825114-6FAE123008DF352FE0EA054A79725E1F/0?term=2]"
+        
+        pic = data['data'][0]['url']
+
         # 生成CQ格式的图片
-        cq_url = "[CQ:image,file={}]".format(data['data'][0]['url'])
+        cq_url = "[CQ:image,file={}]".format(pic)
 
         return cq_url
 
