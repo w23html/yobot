@@ -67,6 +67,9 @@ class RandomPic:
 
         # 返回值
         if data['code'] != 0:
+            quota = data['quota']
+            quota_ttl = data['quota_min_ttl']
+            print("当前余额：{}， 下次回复时间：{}秒".format(quota, quota_ttl))
             return "lsp别冲了，休息休息\n[CQ:image,file=6FAE123008DF352FE0EA054A79725E1F,url=http://c2cpicdw.qpic.cn/offpic_new/1819669596//1819669596-3842825114-6FAE123008DF352FE0EA054A79725E1F/0?term=2]"
         
         pic = data['data'][0]['url']
