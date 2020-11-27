@@ -60,16 +60,14 @@ class RandomPic:
         # return
 
         cmd = ctx['raw_message']
-        print("色图生成器已收到信息：" + str(ctx))
         if cmd == '色图' or cmd == '来张色图':
-            print("收到指令……生成中")
 
             # 调用api发送消息，详见cqhttp文档
             await self.api.send_private_msg(
-                user_id=1819669596, message='[CQ:image,url=https://i.pximg.net/img-original/img/2018/12/12/07/17/13/72076452_p0.png]')
+                user_id=1819669596, message='没有色图')
 
             # 返回字符串：发送消息并阻止后续插件
             return 'HelloWorld'
 
         # 返回布尔值：是否阻止后续插件（返回None视作False）
-        return False
+        return True
