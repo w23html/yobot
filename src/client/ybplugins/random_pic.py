@@ -48,6 +48,16 @@ class RandomPic:
         # async def check_bot():
         #     return 'yes, bot is running'
 
+    @staticmethod
+    def generate_random_pic():
+        """
+        随机生成色图CQ地址
+        :return str
+        """
+
+        return "生成失败"
+
+
     async def execute_async(self, ctx: Dict[str, Any]) -> Union[None, bool, str]:
         '''
         每次bot接收有效消息时触发
@@ -63,11 +73,17 @@ class RandomPic:
         if cmd == '色图' or cmd == '来张色图':
 
             # 调用api发送消息，详见cqhttp文档
-            await self.api.send_private_msg(
-                user_id=1819669596, message='没有色图')
+            # Note: 单独给某人发消息 uncomment
+            # await self.api.send_private_msg(
+            #     user_id=1819669596, message='没有色图')
 
             # 返回字符串：发送消息并阻止后续插件
-            return 'HelloWorld'
+            # Note: 从哪发return到哪
+            reply = generate_random_pic()
+            return {
+                "reply": reply,
+                "block": True
+            }
 
         # 返回布尔值：是否阻止后续插件（返回None视作False）
         return True
