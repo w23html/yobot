@@ -1,19 +1,6 @@
-'''
-自定义功能：
-
-在这里可以编写自定义的功能，
-编写完毕后记得 git commit，
-
-这个模块只是为了快速编写小功能，如果想编写完整插件可以使用：
-https://github.com/richardchien/python-aiocqhttp
-或者
-https://github.com/richardchien/nonebot
-
-关于PR：
-如果基于此文件的PR，请在此目录下新建一个`.py`文件，并修改类名
-然后在`yobot.py`中添加`import`（这一步可以交给仓库管理者做）
-'''
-
+"""
+随机色图生成器（未完成）
+"""
 import asyncio
 from typing import Any, Dict, Union
 
@@ -73,7 +60,8 @@ class RandomPic:
         # return
 
         cmd = ctx['raw_message']
-        if cmd == '色图' or cmd == '来张色图' :
+        print("色图生成器已收到信息：" + ctx)
+        if cmd == '色图' or cmd == '来张色图':
             print("收到指令……生成中")
 
             # 调用api发送消息，详见cqhttp文档
