@@ -80,10 +80,7 @@ class RandomPic:
             # 返回字符串：发送消息并阻止后续插件
             # Note: 从哪发return到哪
             reply = self.generate_random_pic()
-            return {
-                "reply": reply,
-                "block": True
-            }
+            return reply
 
         # 返回布尔值：是否阻止后续插件（返回None视作False）
-        return True
+        return False
